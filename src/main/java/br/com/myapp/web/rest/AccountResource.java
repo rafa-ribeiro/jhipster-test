@@ -1,7 +1,5 @@
 package br.com.myapp.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-
 import br.com.myapp.domain.PersistentToken;
 import br.com.myapp.domain.User;
 import br.com.myapp.repository.PersistentTokenRepository;
@@ -10,10 +8,10 @@ import br.com.myapp.security.SecurityUtils;
 import br.com.myapp.service.MailService;
 import br.com.myapp.service.UserService;
 import br.com.myapp.service.dto.UserDTO;
+import br.com.myapp.web.rest.util.HeaderUtil;
 import br.com.myapp.web.rest.vm.KeyAndPasswordVM;
 import br.com.myapp.web.rest.vm.ManagedUserVM;
-import br.com.myapp.web.rest.util.HeaderUtil;
-
+import com.codahale.metrics.annotation.Timed;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing the current user's account.

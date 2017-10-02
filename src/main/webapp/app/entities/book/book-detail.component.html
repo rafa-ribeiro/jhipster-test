@@ -1,0 +1,43 @@
+
+<div *ngIf="book">
+    <h2><span>Book</span> {{book.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{book.title}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{book.description}}</span>
+        </dd>
+        <dt><span>Publication Date</span></dt>
+        <dd>
+            <span>{{book.publicationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Price</span></dt>
+        <dd>
+            <span>{{book.price}}</span>
+        </dd>
+        <dt><span>Author</span></dt>
+        <dd>
+            <div *ngIf="book.authorId">
+                <a [routerLink]="['/author', book.authorId]">{{book.authorName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'book/'+ book.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
